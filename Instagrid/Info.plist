@@ -21,5 +21,12 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>thirsty_soft_regular.otf</string>
+		<string>Delm-Medium.otf</string>
+	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow access</string>
 </dict>
 </plist>
