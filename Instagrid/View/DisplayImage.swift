@@ -17,14 +17,21 @@ class DisplayImage: UIView {
     @IBOutlet private var imageView4:UIImageView!
     @IBOutlet private var imageView5:UIImageView!
     @IBOutlet private var imageView6:UIImageView!
+    @IBOutlet private var imageView7:UIImageView!
+    @IBOutlet private var imageView8:UIImageView!
+    @IBOutlet private var imageView9:UIImageView!
+    @IBOutlet private var imageView10:UIImageView!
     
-
     @IBOutlet private var imagePlus1:UIImageView!
     @IBOutlet private var imagePlus2:UIImageView!
     @IBOutlet private var imagePlus3:UIImageView!
     @IBOutlet private var imagePlus4:UIImageView!
     @IBOutlet private var imagePlus5:UIImageView!
     @IBOutlet private var imagePlus6:UIImageView!
+    @IBOutlet private var imagePlus7:UIImageView!
+    @IBOutlet private var imagePlus8:UIImageView!
+    @IBOutlet private var imagePlus9:UIImageView!
+    @IBOutlet private var imagePlus10:UIImageView!
     
     @IBOutlet private var bottomVerticalColumn:UIView!
     @IBOutlet private var topVerticalColumn:UIView!
@@ -44,102 +51,89 @@ class DisplayImage: UIView {
     // setStyle function allow to choose between three different display style.
     private func setStyle(_ style: Style) {
         
-        imageView1.translatesAutoresizingMaskIntoConstraints = false
-        imageView2.translatesAutoresizingMaskIntoConstraints = false
-        imageView3.translatesAutoresizingMaskIntoConstraints = false
-        imageView4.translatesAutoresizingMaskIntoConstraints = false
-        
-        imageView1.removeConstraints(imageView1.constraints)
-        imageView2.removeConstraints(imageView2.constraints)
-        imageView3.removeConstraints(imageView3.constraints)
-        imageView4.removeConstraints(imageView4.constraints)
-        
-        
         imageView1.layer.zPosition = 1
         imageView2.layer.zPosition = 1
         imageView3.layer.zPosition = 1
         imageView4.layer.zPosition = 1
         imageView5.layer.zPosition = 1
         imageView6.layer.zPosition = 1
- 
+        imageView7.layer.zPosition = 1
+        imageView8.layer.zPosition = 1
+        imageView9.layer.zPosition = 1
+        imageView10.layer.zPosition = 1
         
         switch style {
             
         // First display imageView selection and constraints.
         case .display1:
      
-            
             topVerticalColumn.isHidden = true
             bottomVerticalColumn.isHidden = false
             
-            imagePlus1.isHidden = true
-            imagePlus2.isHidden = true
+            imagePlus1.isHidden = false
+            imagePlus2.isHidden = false
             imagePlus3.isHidden = false
-            imagePlus4.isHidden = false
+            imagePlus4.isHidden = true
             imagePlus5.isHidden = true
-            imagePlus6.isHidden = false
+            imagePlus6.isHidden = true
+            imagePlus7.isHidden = true
+            imagePlus8.isHidden = true
+            imagePlus9.isHidden = true
+            imagePlus10.isHidden = true
             
+            imageView1.isHidden = false
+            imageView2.isHidden = false
             imageView3.isHidden = false
             imageView4.isHidden = true
-            imageView5.isHidden = false
+            imageView5.isHidden = true
             imageView6.isHidden = true
+            imageView7.isHidden = true
+            imageView8.isHidden = true
+            imageView9.isHidden = true
+            imageView10.isHidden = true
             
-            imageView5.image = imageView2.image
-            if (imageView6.image != nil) {
-                imageView3.image = imageView6.image}
-            
-            NSLayoutConstraint.activate([
-                imageView1.widthAnchor.constraint(equalToConstant: 270),
-                imageView1.heightAnchor.constraint(equalToConstant: 125),
-                
-                imageView5.widthAnchor.constraint(equalToConstant: 125),
-                imageView5.heightAnchor.constraint(equalToConstant: 125),
-                imageView5.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-                
-                imageView3.widthAnchor.constraint(equalToConstant: 125),
-                imageView3.heightAnchor.constraint(equalToConstant: 125),
-                imageView3.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-                imageView3.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-           
-            ])
-            
+            if let image4 = imageView4.image { imageView1.image = image4 }
+            if let image7 = imageView7.image { imageView1.image = image7 }
+            if let image5 = imageView5.image { imageView2.image = image5}
+            if let image8 = imageView8.image { imageView2.image = image8}
+            if let image6 = imageView6.image { imageView3.image = image6}
+            if let image9 = imageView9.image { imageView3.image = image9}
+    
         // second display imageView selection and constraints.
         case .display2:
             
             topVerticalColumn.isHidden = false
             bottomVerticalColumn.isHidden = true
             
-            imagePlus1.isHidden = false
-            imagePlus2.isHidden = false
+            imagePlus1.isHidden = true
+            imagePlus2.isHidden = true
             imagePlus3.isHidden = true
-            imagePlus4.isHidden = true
+            imagePlus4.isHidden = false
             imagePlus5.isHidden = false
-            imagePlus6.isHidden = true
+            imagePlus6.isHidden = false
+            imagePlus7.isHidden = true
+            imagePlus8.isHidden = true
+            imagePlus9.isHidden = true
+            imagePlus10.isHidden = true
             
-            imageView3.isHidden = false
-            imageView4.isHidden = true
-            imageView5.isHidden = true
-            imageView6.isHidden = true
-            imageView2.image = imageView5.image
-            if (imageView6.image != nil) {
-                imageView3.image = imageView6.image}
+            imageView1.isHidden = true
+            imageView2.isHidden = true
+            imageView3.isHidden = true
+            imageView4.isHidden = false
+            imageView5.isHidden = false
+            imageView6.isHidden = false
+            imageView7.isHidden = true
+            imageView8.isHidden = true
+            imageView9.isHidden = true
+            imageView10.isHidden = true
             
+            if let image1 = imageView1.image { imageView4.image = image1 }
+            if let image7 = imageView7.image { imageView4.image = image7 }
+            if let image2 = imageView2.image { imageView5.image = image2 }
+            if let image8 = imageView8.image { imageView5.image = image8 }
+            if let image3 = imageView3.image { imageView6.image = image3 }
+            if let image9 = imageView9.image { imageView6.image = image9 }
             
-            NSLayoutConstraint.activate([
-                imageView1.widthAnchor.constraint(equalToConstant: 125),
-                imageView1.heightAnchor.constraint(equalToConstant: 125),
-                
-                imageView2.widthAnchor.constraint(equalToConstant: 125),
-                imageView2.heightAnchor.constraint(equalToConstant: 125),
-                imageView2.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-                imageView2.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-             
-                imageView3.widthAnchor.constraint(equalToConstant: 270),
-                imageView3.heightAnchor.constraint(equalToConstant: 125),
-                imageView3.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-            ])
-            
-     
         // third display imageView selection and constraints.
         case .display3:
             
@@ -147,45 +141,34 @@ class DisplayImage: UIView {
             bottomVerticalColumn.isHidden = false
             
             
-            imagePlus1.isHidden = false
-            imagePlus2.isHidden = false
+            imagePlus1.isHidden = true
+            imagePlus2.isHidden = true
             imagePlus3.isHidden = true
-            imagePlus4.isHidden = false
+            imagePlus4.isHidden = true
             imagePlus5.isHidden = true
-            imagePlus6.isHidden = false
+            imagePlus6.isHidden = true
+            imagePlus7.isHidden = false
+            imagePlus8.isHidden = false
+            imagePlus9.isHidden = false
+            imagePlus10.isHidden = false
             
+            imageView1.isHidden = true
+            imageView2.isHidden = true
             imageView3.isHidden = true
-            imageView4.isHidden = false
+            imageView4.isHidden = true
             imageView5.isHidden = true
-            imageView6.isHidden = false
-            if (imageView5.image != nil) {
-                imageView2.image = imageView5.image}
-
-         
-                imageView6.image = imageView3.image
+            imageView6.isHidden = true
+            imageView7.isHidden = false
+            imageView8.isHidden = false
+            imageView9.isHidden = false
+            imageView10.isHidden = false
             
-        
-            
-            NSLayoutConstraint.activate([
-                imageView1.widthAnchor.constraint(equalToConstant: 125),
-                imageView1.heightAnchor.constraint(equalToConstant: 125),
-          
-                imageView2.widthAnchor.constraint(equalToConstant: 125),
-                imageView2.heightAnchor.constraint(equalToConstant: 125),
-                imageView2.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-                imageView2.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-
-                imageView6.widthAnchor.constraint(equalToConstant: 125),
-                imageView6.heightAnchor.constraint(equalToConstant: 125),
-                imageView6.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
-                imageView6.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-                
-                
-                imageView4.widthAnchor.constraint(equalToConstant: 125),
-                imageView4.heightAnchor.constraint(equalToConstant: 125),
-                imageView4.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-                imageView4.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-            ])
+            if let image1 = imageView1.image  { imageView7.image = image1}
+            if let image4 = imageView4.image { imageView7.image = image4 }
+            if let image2 = imageView2.image { imageView8.image = image2}
+            if let image5 = imageView5.image { imageView8.image = image5}
+            if let image3 = imageView3.image { imageView9.image = image3}
+            if let image6 = imageView6.image { imageView9.image = image6}
         }
     }
 }

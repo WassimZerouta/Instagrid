@@ -7,9 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController , UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
-    
-    
+class ViewController: UIViewController {
     
     @IBOutlet weak var displayImage: UIView!
     
@@ -19,13 +17,16 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
     @IBOutlet weak var imageView4: UIImageView!
     @IBOutlet weak var imageView5: UIImageView!
     @IBOutlet weak var imageView6: UIImageView!
+    @IBOutlet weak var imageView7: UIImageView!
+    @IBOutlet weak var imageView8: UIImageView!
+    @IBOutlet weak var imageView9: UIImageView!
+    @IBOutlet weak var imageView10: UIImageView!
     
     @IBOutlet weak var firstDisplaySelector: UIImageView!
     @IBOutlet weak var secondDisplaySelector: UIImageView!
     @IBOutlet weak var thirdDisplaySelector: UIImageView!
     
     @IBOutlet weak var display: DisplayImage!
-    
     
     @IBOutlet weak var label: UILabel!
     
@@ -39,11 +40,32 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
     }
     
     @IBAction func secondDisplayButton() {
-     secondDisplay()
+        secondDisplay()
     }
     
     @IBAction func thirdDisplayButton() {
-    thirdDisplay()
+        thirdDisplay()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        secondDisplay()
+        
+        let swipeUpGestureReconizer = UIPanGestureRecognizer(target: self, action: #selector(swipeUp(_:)))
+        self.displayImage.addGestureRecognizer(swipeUpGestureReconizer)
+        
+        labelText()
+
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        
+        //Implementation of the chooseImage function when we tap on a imageView.
+        [imageView1,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7,imageView8,imageView9,imageView10].forEach {
+            $0?.isUserInteractionEnabled = true
+            $0?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseImage)))
+        }
     }
     
     
@@ -81,19 +103,8 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
     @objc func chooseImage(_ gesture: UITapGestureRecognizer) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
             selectedView = gesture.view
-            
-            
             present(imagePicker, animated: true)
         }
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        (selectedView as? UIImageView)?.image = info[.originalImage] as? UIImage
-        dismiss(animated: true)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true)
     }
     
     // swipeUp function allow to manage the swipe up movement on the display, and start the activityViewController in order to record the display image.
@@ -101,7 +112,7 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
         let translation = sender.translation(in: displayImage)
         switch sender.state {
         case .began, .changed:
-                UIView.animate(withDuration: 0.50) {
+                UIView.animate(withDuration: 0.75) {
                     self.displayImage.transform = CGAffineTransform(translationX: 0, y: translation.y)
             }
         case .cancelled, .ended:
@@ -111,7 +122,7 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
                 }
                 
             let image = self.displayImage.takeScreenShot()
-            let activityController = UIActivityViewController(activityItems: [image] , applicationActivities: nil)
+                let activityController = UIActivityViewController(activityItems: [image] , applicationActivities: nil)
             present(activityController, animated: true)
 
                 activityController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
@@ -120,7 +131,7 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
                     }
                 }
             } else {
-                UIView.animate(withDuration: 0.5) {
+                UIView.animate(withDuration: 0.75) {
                     self.displayImage.transform = .identity
                 }
             }
@@ -135,7 +146,7 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
         let translation = sender.translation(in: displayImage)
         switch sender.state {
         case .began, .changed:
-                UIView.animate(withDuration: 0.50) {
+                UIView.animate(withDuration: 0.75) {
                     self.displayImage.transform = CGAffineTransform(translationX: translation.x, y: 0)
             }
         case .cancelled, .ended:
@@ -144,8 +155,8 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
                     self.displayImage.transform = CGAffineTransform(translationX: -650, y: 0)
                 }
                 
-            let image = self.displayImage.takeScreenShot()
-            let activityController = UIActivityViewController(activityItems: [image] , applicationActivities: nil)
+                _ = self.displayImage.takeScreenShot()
+            let activityController = UIActivityViewController(activityItems: ["image"] , applicationActivities: nil)
             present(activityController, animated: true)
 
                 activityController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
@@ -154,14 +165,13 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
                     }
                 }
             } else {
-                UIView.animate(withDuration: 0.5) {
+                UIView.animate(withDuration: 0.75) {
                     self.displayImage.transform = .identity
                 }
             }
         default:
             break
         }
-    
     }
     
     //Notifies when the orientation is about to change, in order to choose between the swipeUp function and the swipeLeftFunction.
@@ -176,27 +186,24 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate & UINav
             label.font = UIFont(name:"Delm-Medium", size:25)
             let swipeLeftGestureReconizer = UIPanGestureRecognizer(target: self, action: #selector(swipeLeft(_:)))
             self.displayImage.addGestureRecognizer(swipeLeftGestureReconizer)
-           
-        }
-    }
-    
-    override func viewDidLoad() {
-        
-        secondDisplay()
-        
-        labelText()
-
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        
-        //Implementation of the chooseImage function when we tap on a imageView.
-        [imageView1,imageView2,imageView3,imageView4,imageView5,imageView6].forEach {
-            $0?.isUserInteractionEnabled = true
-            $0?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseImage)))
         }
     }
 }
+
+extension ViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        (selectedView as? UIImageView)?.image = info[.originalImage] as? UIImage
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+}
+
+extension ViewController: UINavigationControllerDelegate {}
 
 extension UIView {
     
