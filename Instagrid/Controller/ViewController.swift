@@ -22,16 +22,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView9: UIImageView!
     @IBOutlet weak var imageView10: UIImageView!
     
+    @IBOutlet weak var imagePlus1: UIImageView!
+    @IBOutlet weak var imagePlus2: UIImageView!
+    @IBOutlet weak var imagePlus3: UIImageView!
+    @IBOutlet weak var imagePlus4: UIImageView!
+    @IBOutlet weak var imagePlus5: UIImageView!
+    @IBOutlet weak var imagePlus6: UIImageView!
+    @IBOutlet weak var imagePlus7: UIImageView!
+    @IBOutlet weak var imagePlus8: UIImageView!
+    @IBOutlet weak var imagePlus9: UIImageView!
+    @IBOutlet weak var imagePlus10: UIImageView!
+    
+    @IBOutlet weak var topVerticalColumn: UIView!
+    @IBOutlet weak var bottomVerticalColumn: UIView!
+    
     @IBOutlet weak var firstDisplaySelector: UIImageView!
     @IBOutlet weak var secondDisplaySelector: UIImageView!
     @IBOutlet weak var thirdDisplaySelector: UIImageView!
     
-    @IBOutlet weak var display: DisplayImage!
-    
     @IBOutlet weak var label: UILabel!
     
-    var selectedView: UIView!
+    @IBOutlet weak var display: UIView!
     
+    var selectedView: UIView!
+    var displayStyle: Style!
     let imagePicker = UIImagePickerController()
     
     // Buttons allowing to choose between the three displays
@@ -49,6 +63,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        displayStyle = Style(imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8, imageView9, imageView10, imagePlus1, imagePlus2, imagePlus3, imagePlus4, imagePlus5, imagePlus6, imagePlus7, imagePlus8, imagePlus9, imagePlus10, firstDisplaySelector, secondDisplaySelector, thirdDisplaySelector, bottomVerticalColumn, topVerticalColumn)
         
         secondDisplay()
         
@@ -72,32 +88,24 @@ class ViewController: UIViewController {
     //Action buttons functions
     func firstDisplay() {
         display.isHidden = false
-        display.style = .display1
-        firstDisplaySelector.isHidden = false
-        secondDisplaySelector.isHidden = true
-        thirdDisplaySelector.isHidden = true
+        displayStyle.style = .display1
     }
     
     func secondDisplay() {
         display.isHidden = false
-        display.style = .display2
-        firstDisplaySelector.isHidden = true
-        secondDisplaySelector.isHidden = false
-        thirdDisplaySelector.isHidden = true
+        displayStyle.style = .display2
     }
     
     func thirdDisplay() {
         display.isHidden = false
-        display.style = .display3
-        firstDisplaySelector.isHidden = true
-        secondDisplaySelector.isHidden = true
-        thirdDisplaySelector.isHidden = false
+        displayStyle.style = .display3
     }
     
     func labelText() {
         label.text = "Swipe up to share"
         label.font = UIFont(name:"Delm-Medium", size:25)
     }
+    
     
     // Function allowing to select a photo in the album photos.
     @objc func chooseImage(_ gesture: UITapGestureRecognizer) {

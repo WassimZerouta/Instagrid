@@ -62,7 +62,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tA4-J0-x8F">
                                                                 <rect key="frame" x="0.0" y="0.0" width="310" height="310"/>
                                                                 <subviews>
-                                                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42r-kR-ASd" userLabel="Display1" customClass="DisplayImage" customModule="Instagrid" customModuleProvider="target">
+                                                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42r-kR-ASd" userLabel="Display1">
                                                                         <rect key="frame" x="20" y="20" width="270" height="270"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <subviews>
@@ -153,31 +153,6 @@
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             </imageView>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                        <connections>
-                                                                            <outlet property="bottomVerticalColumn" destination="3Lm-Bg-cmE" id="O9z-rU-NeK"/>
-                                                                            <outlet property="imagePlus1" destination="YeG-tm-nQU" id="Anv-d6-xbP"/>
-                                                                            <outlet property="imagePlus10" destination="ZGs-5L-yfl" id="Edu-EP-ZNR"/>
-                                                                            <outlet property="imagePlus2" destination="xik-C1-dve" id="hYx-5X-c9K"/>
-                                                                            <outlet property="imagePlus3" destination="u4z-Bk-12t" id="rnb-ar-qol"/>
-                                                                            <outlet property="imagePlus4" destination="t77-KX-Xiy" id="wq8-RM-4JO"/>
-                                                                            <outlet property="imagePlus5" destination="fVe-Nm-Da9" id="Zte-Tp-7QS"/>
-                                                                            <outlet property="imagePlus6" destination="8LI-I4-fPu" id="3I7-4b-CBs"/>
-                                                                            <outlet property="imagePlus7" destination="zul-o6-Uqr" id="DNx-oD-Sev"/>
-                                                                            <outlet property="imagePlus8" destination="jwU-az-3GL" id="Af6-60-Juf"/>
-                                                                            <outlet property="imagePlus9" destination="dBz-gM-Psn" id="Oyv-5b-Lpc"/>
-                                                                            <outlet property="imageView1" destination="FnX-XK-O3I" id="kcz-Ak-GCq"/>
-                                                                            <outlet property="imageView10" destination="p1E-ON-Zgz" id="3TF-sn-g61"/>
-                                                                            <outlet property="imageView2" destination="CHU-Hs-kGJ" id="brv-kP-dfk"/>
-                                                                            <outlet property="imageView3" destination="4yn-Fr-wJq" id="fyK-1w-IxS"/>
-                                                                            <outlet property="imageView4" destination="YX7-6b-OCp" id="spg-WY-wKC"/>
-                                                                            <outlet property="imageView5" destination="fYn-JG-ff7" id="ofc-GV-ran"/>
-                                                                            <outlet property="imageView6" destination="RwV-hW-6B7" id="TLB-oe-28p"/>
-                                                                            <outlet property="imageView7" destination="y5h-5S-XD9" id="7wr-f7-Ofu"/>
-                                                                            <outlet property="imageView8" destination="Cto-Y8-DBE" id="81g-EQ-z0B"/>
-                                                                            <outlet property="imageView9" destination="u1s-4L-ltp" id="1l4-bz-jrC"/>
-                                                                            <outlet property="topVerticalColumn" destination="nA5-4h-22O" id="cmV-fH-edl"/>
-                                                                        </connections>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gC4-fi-2Yq">
                                                                         <rect key="frame" x="20" y="0.0" width="270" height="20"/>
@@ -381,9 +356,20 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="display" destination="42r-kR-ASd" id="om8-M3-uEV"/>
+                        <outlet property="bottomVerticalColumn" destination="3Lm-Bg-cmE" id="EHG-ZF-s7H"/>
+                        <outlet property="display" destination="42r-kR-ASd" id="UaE-8G-EDn"/>
                         <outlet property="displayImage" destination="tA4-J0-x8F" id="8HV-8M-Dno"/>
                         <outlet property="firstDisplaySelector" destination="bek-rb-CXS" id="Ize-Wb-sd3"/>
+                        <outlet property="imagePlus1" destination="YeG-tm-nQU" id="iI3-4c-GC2"/>
+                        <outlet property="imagePlus10" destination="ZGs-5L-yfl" id="Q3q-5L-l2q"/>
+                        <outlet property="imagePlus2" destination="xik-C1-dve" id="xLg-6f-OEl"/>
+                        <outlet property="imagePlus3" destination="u4z-Bk-12t" id="HHH-eg-lVd"/>
+                        <outlet property="imagePlus4" destination="t77-KX-Xiy" id="cjs-0O-dAB"/>
+                        <outlet property="imagePlus5" destination="fVe-Nm-Da9" id="rOf-uk-wIF"/>
+                        <outlet property="imagePlus6" destination="8LI-I4-fPu" id="WHR-GX-MJx"/>
+                        <outlet property="imagePlus7" destination="zul-o6-Uqr" id="8Pp-h5-kyG"/>
+                        <outlet property="imagePlus8" destination="jwU-az-3GL" id="39C-tM-PIG"/>
+                        <outlet property="imagePlus9" destination="dBz-gM-Psn" id="R8b-35-dyt"/>
                         <outlet property="imageView1" destination="FnX-XK-O3I" id="A5S-rJ-DtC"/>
                         <outlet property="imageView10" destination="p1E-ON-Zgz" id="jgi-4t-N5o"/>
                         <outlet property="imageView2" destination="CHU-Hs-kGJ" id="zTT-D7-Fch"/>
@@ -397,6 +383,7 @@
                         <outlet property="label" destination="xoE-Tk-JyJ" id="mdi-xf-3K8"/>
                         <outlet property="secondDisplaySelector" destination="seu-QS-DUe" id="H8I-FY-ekS"/>
                         <outlet property="thirdDisplaySelector" destination="fK6-LA-YKM" id="gW1-Qi-MZv"/>
+                        <outlet property="topVerticalColumn" destination="nA5-4h-22O" id="AWb-5X-4z7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
